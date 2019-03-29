@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Authoring Workflow &mdash; Fathom 3.0a1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/tweaks.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Fathom 3.0a1 documentation" href="index.html"/>
+        <link rel="next" title="Rule and Ruleset Reference" href="ruleset.html"/>
+        <link rel="prev" title="Basic Use" href="using.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Fathom
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0a1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using.html">Basic Use</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Authoring Workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sources-of-signal">Sources of Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fuzzy-logic">Fuzzy Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tips">Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ruleset.html">Rule and Ruleset Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fnodes.html">Fnode Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilities.html">Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versions.html">Version History</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Fathom</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Authoring Workflow</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/workflow.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="authoring-workflow">
+<h1>Authoring Workflow<a class="headerlink" href="#authoring-workflow" title="Permalink to this headline">¶</a></h1>
+<p>As a bridge between the language introduction and the API reference, here is a high-level overview of how to develop a Fathom ruleset.</p>
+<div class="section" id="sources-of-signal">
+<h2>Sources of Signal<a class="headerlink" href="#sources-of-signal" title="Permalink to this headline">¶</a></h2>
+<p>What sorts of rules should you write? In short, ones that express simple, atomic &#8220;smells&#8221; that lead Fathom by the nose to the target element. For example, if you are trying to recognize the images of products for sale on shopping sites, the target image might have smells like...</p>
+<ul class="simple">
+<li>Large size</li>
+<li>Position near the top of the page</li>
+<li>Position near the left of the page</li>
+<li>IDs or class names that contain the strings &#8220;hero&#8221; or &#8220;product&#8221;</li>
+</ul>
+<p>Don&#8217;t worry about expressing boolean combinations of smells except as a last resort. It&#8217;s generally sufficient to let Fathom optimize a linear combination of them.</p>
+<p>Since the primitives exposed by Fathom are thus far geared to the measurement of DOM properties (rather than, say, natural language processing), the best bang for your buck is rules that consider...</p>
+<ul class="simple">
+<li>CSS classes and IDs. Simply test for inclusion of signal-bearing strings. It is generally unnecessary to resort to tokenizing.</li>
+<li>Rendered size or position of elements</li>
+<li>Alignment or proximity of elements to each other</li>
+<li>Font sizes</li>
+<li>Colors and borders</li>
+<li>Visibility</li>
+<li>Any of the above in ancestor elements of the target</li>
+</ul>
+<p>A useful technique is to look at some of the pages in your corpus and blur your eyes slightly. This shows you the page as Fathom sees it: you can&#8217;t read the text, but you can likely still recognize the target elements. Write rules that express the smells you are using to sniff them out.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Computed CSS properties are worth a special mention: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle">getComputedStyle()</a> is the most robust way to retrieve style information about an element, since most properties are inherited through the complex interplay of stylesheets. Don&#8217;t try to look at <code class="docutils literal"><span class="pre">style</span></code> attributes directly or otherwise painstakingly reason out styles.</p>
+</div>
+</div>
+<div class="section" id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<p>Your authoring process can vary, but this is a good place to start.</p>
+<ol class="arabic simple">
+<li>Set up <a class="reference external" href="https://addons.mozilla.org/en-US/firefox/addon/fathomfox/">FathomFox</a> as per its Quick Start.</li>
+<li>Write some rules. Set the initial coefficients all to 4. (1 also works fine, though I suspect that setting them a bit higher lets the trainer more quickly find solutions that require deemphasizing one or two bad rules.)</li>
+<li>Do a training run in FathomFox. Start with 10-20 pages.</li>
+<li>If accuracy is insufficient, examine the failing pages. Remediate by changing or adding rules. If there are patterns Fathom is missing, add rules that give score bonuses for them. If there are certain kinds of elements Fathom is choosing spuriously, add rules that punish them in terms of score.</li>
+<li>Go to 3.</li>
+<li>Once <em>testing accuracy</em> is sufficient, copy the coefficients into your ruleset, and run the trainer on a fresh set of samples, just until the first set of accuracy numbers appears. This is your <em>testing accuracy</em> and should reflect real-world performance, assuming your sample size is large and representative enough. The computed 95% confidence intervals should help you decide the former.</li>
+<li>If testing accuracy is too low, imbibe the testing pages into your training corpus, and go back to step 3. As typical in supervised learning systems, testing samples should be considered &#8220;burned&#8221; once they are measured against a single time, as otherwise you are effectively training against them. Samples are precious.</li>
+<li>If testing accuracy is sufficient, you&#8217;re done! Copy the ruleset and coefficients out of fathom-trainees into your finished product, and ship it.</li>
+</ol>
+</div>
+<div class="section" id="fuzzy-logic">
+<h2>Fuzzy Logic<a class="headerlink" href="#fuzzy-logic" title="Permalink to this headline">¶</a></h2>
+<p>A few rulesets have experimented with constraining the returned subscores from individual scoring callbacks to the range (0, 1), a la fuzzy logic. Early results have been promising. The advantages are...</p>
+<ol class="arabic simple">
+<li>Capping them keeps subscores (which are multiplied together) from ballooning without limit. This allows the application of static thresholds for confidence floors and for performance-motivated early pruning. (Though note that you would need to take the nth root of an optimized score before treating it as a raw confidence, n being the sum of the coefficients for scores on that type.)</li>
+<li>Using (0, 1) provides an intuitive interpretation of each subscore as a probability. This often makes a nice sanity check. <a class="reference external" href="https://github.com/mozilla/fathom-trainees/blob/6a0ca6b59ff70fcf05eb13906829b62856133a10/src/trainees.js#L180">Trapezoid functions</a> are a great tool for keeping values in range.</li>
+</ol>
+<p>When returning fuzzy-logic subscores from a scoring callback, raise the (0, 1) value to the coefficient&#8217;s power rather than multiplying it. See <a class="reference external" href="https://github.com/mozilla/fathom-trainees/blob/6a0ca6b59ff70fcf05eb13906829b62856133a10/src/trainees.js#L101">this example</a>. This keeps the final returned value between 0 and 1. The <code class="docutils literal"><span class="pre">ZEROISH</span></code> and <code class="docutils literal"><span class="pre">ONEISH</span></code> <a class="reference external" href="https://github.com/mozilla/fathom-trainees/blob/6a0ca6b59ff70fcf05eb13906829b62856133a10/src/trainees.js#L52">constants from that example</a> are also good choices with wide applicability.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you do use fuzzy-logic subscores, note that the range is exclusive: returning a hard 0 or 1 is bad news. Since subscores get multiplied together, a 0 will obliterate a score with no chance at redemption. Conversely, a 1 cannot be softened by the trainer by raising it to the power of a coefficient.</p>
+</div>
+</div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Lots of simple rules are better than fewer, more complex ones. Not only are they easier to write, but the further you can break up your guesses into separately optimizable pieces, the more good the trainer can do.</li>
+<li>Your rules don&#8217;t all have to be good. If you have an idea for a smell, code it up. If it was a bad idea, the trainer will give it a weak coefficient, and you can prune it away.</li>
+<li><a class="reference internal" href="ruleset.html#when" title="when"><code class="xref js js-func docutils literal"><span class="pre">when()</span></code></a> is good for early pruning: hard, yes/no decisions on what should be considered. Scores are for gradations.</li>
+<li>Many good rule ideas come out of labeling samples. If you are not labeling samples yourself, at least study them in depth so you can notice patterns.</li>
+<li>Rubrics are vital for labeling. If samples are labeled inconsistently, they will push the trainer in conflicting directions, and your accuracy will be poor. Also, keep your rubrics up to date. Whenever you encounter a case where you have to make a new decision—something the rubric doesn&#8217;t already clearly decide—edit the rubric to codify that decision so you are consistent with it in the future.</li>
+<li>Include some samples that are missing the thing you&#8217;re trying to recognize so you can tune your ruleset to avoid false positives.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ruleset.html" class="btn btn-neutral float-right" title="Rule and Ruleset Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="using.html" class="btn btn-neutral" title="Basic Use" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017-2018, Mozilla Foundation.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0a1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
